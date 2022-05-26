@@ -3,6 +3,7 @@ function App() {
   return (
     <div>
       <h2>Test</h2>
+      <h2>Test</h2>
       <ExpensesList />
     </div>
   );
