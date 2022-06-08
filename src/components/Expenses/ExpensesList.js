@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import "./ExpensesList.css";
+import ExpensesFilter from "./ExpensesFilter";
 
-function ExpensesList() {
+function ExpensesList(props) {
+  const [filterYear, setFilterYear] = useState("2019");
+  const filterChangeHandler = (selectedYear) => {
+    setFilterYear(selectedYear);
+  };
   const expenses = [
     {
       id: "e1",
@@ -26,7 +31,14 @@ function ExpensesList() {
     },
   ];
   const itemList = expenses.map((item) => <ExpenseItem key={item.id} date={item.date} amount={item.amount} title={item.title} />);
-  return <Card className="expenses">{itemList}</Card>;
+  return (
+    <div>
+      <Card className="expenses">
+        <ExpensesFilter selected={filterYear} onChabgeFilter={filterChangeHandler} />
+        {itemList}
+      </Card>
+    </div>
+  );
 }
 
 export default ExpensesList;
