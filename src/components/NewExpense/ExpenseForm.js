@@ -5,6 +5,7 @@ function ExpenseForm(props) {
   const [enteredTitle, setEnteredTile] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const titleChangeHandler = (event) => {
     setEnteredTile(event.target.value);
@@ -30,8 +31,16 @@ function ExpenseForm(props) {
     setEnteredTile("");
     setEnteredAmount("");
     setEnteredDate("");
+    setShowForm(false);
+  };
+  const cancelHandler = () => {
+    setEnteredTile("");
+    setEnteredAmount("");
+    setEnteredDate("");
+    setShowForm(false);
   };
 
+  if (!showForm) return <button onClick={() => setShowForm(true)}>Add New Expense</button>;
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -45,10 +54,11 @@ function ExpenseForm(props) {
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" min="2022-01-01" max="2024-12-31" value={enteredDate} onChange={dateChangeHandler}></input>
+          <input type="date" min="2019-01-01" max="2024-12-31" value={enteredDate} onChange={dateChangeHandler}></input>
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={cancelHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
