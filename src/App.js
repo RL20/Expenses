@@ -14,13 +14,19 @@ function App() {
       id: "e3",
       title: "Car Insurance",
       amount: 2530.67,
-      date: new Date(2019, 5, 24),
+      date: new Date(2022, 5, 24),
     },
     {
       id: "e4",
       title: "New Desk ",
       amount: 450,
-      date: new Date(2022, 5, 23),
+      date: new Date(2022, 3, 23),
+    },
+    {
+      id: "e5",
+      title: "psu ",
+      amount: 600,
+      date: new Date(2022, 3, 10),
     },
   ];
   const [expenses, setExpenses] = useState(dummyExpenses);
